@@ -23,17 +23,17 @@ class DFAutomaton:
         initial_state = self.states[initial]
         next_state = self.next_state(initial_state, word[0])
         if verbose:
-            print("starting at state {}".format(initial_state.name))
-            print("going to state {} with transition {}".format(next_state.name, word[0]))
+            print(f"starting at state {initial_state.name}")
+            print(f"going to state {next_state.name} with transition {word[0]}")
         for i in range(1, len(word)):
             next_state = self.next_state(initial_state, word[i])
             if verbose:
-                print("going to state {} with transition {}".format(next_state.name, word[i]))
+                print(f"going to state {next_state.name} with transition {word[i]}")
         if verbose:
             if next_state.accepting:
-                print("accepting at state {}".format(next_state.name))
+                print(f"accepting at state {next_state.name}")
             else:
-                print("not accepting at state {}".format(next_state.name))
+                print(f"not accepting at state {next_state.name}")
         return next_state.accepting
 
 
