@@ -1,0 +1,63 @@
+digraph {
+	4 [label="4
+P:313"]
+	3 [label="3
+P:1847"]
+	4 -> 3
+	2 [label="2
+P:4588"]
+	3 -> 2
+	1 [label="1
+P:8985"]
+	2 -> 1
+	"1LNone" [label=""]
+	1 -> "1LNone"
+	"1RNone" [label=""]
+	1 -> "1RNone"
+	"2RNone" [label=""]
+	2 -> "2RNone"
+	"3RNone" [label=""]
+	3 -> "3RNone"
+	10 [label="10
+P:1748"]
+	4 -> 10
+	5 [label="5
+P:4254"]
+	10 -> 5
+	"5LNone" [label=""]
+	5 -> "5LNone"
+	7 [label="7
+P:4434"]
+	5 -> 7
+	6 [label="6
+P:4904"]
+	7 -> 6
+	"6LNone" [label=""]
+	6 -> "6LNone"
+	"6RNone" [label=""]
+	6 -> "6RNone"
+	8 [label="8
+P:6606"]
+	7 -> 8
+	"8LNone" [label=""]
+	8 -> "8LNone"
+	9 [label="9
+P:9978"]
+	8 -> 9
+	"9LNone" [label=""]
+	9 -> "9LNone"
+	"9RNone" [label=""]
+	9 -> "9RNone"
+	11 [label="11
+P:6569"]
+	10 -> 11
+	"11LNone" [label=""]
+	11 -> "11LNone"
+	12 [label="12
+P:8473"]
+	11 -> 12
+	"12LNone" [label=""]
+	12 -> "12LNone"
+	"12RNone" [label=""]
+	12 -> "12RNone"
+}

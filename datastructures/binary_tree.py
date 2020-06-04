@@ -1,3 +1,6 @@
+from graphviz import Digraph
+
+
 class TreeNode:
     def __init__(self, node):
         self.node = node
@@ -27,6 +30,7 @@ class TreeNode:
 class BinarySearchTree:
     def __init__(self, root):
         self.root = TreeNode(root)
+        self.dot = None
         self.node_count = 1
 
     # insert a new node into the BST
@@ -83,15 +87,41 @@ class BinarySearchTree:
         else:
             print(f"{node} not in Tree ({steps_tree} nodes compared)")
 
+    def gen_graph_node(self, graph_node):
+        if graph_node.child_left is not None:
+            self.dot.node(str(graph_node.child_left.node), str(graph_node.child_left.node))
+            self.dot.edge(str(graph_node.node), str(graph_node.child_left.node))
+            self.gen_graph_node(graph_node.child_left)
+        else:
+            self.dot.node(str(graph_node.node) + "LNone", "")
+            self.dot.edge(str(graph_node.node), str(graph_node.node) + "LNone")
+        if graph_node.child_right is not None:
+            self.dot.node(str(graph_node.child_right.node), str(graph_node.child_right.node))
+            self.dot.edge(str(graph_node.node), str(graph_node.child_right.node))
+            self.gen_graph_node(graph_node.child_right)
+        else:
+            self.dot.node(str(graph_node.node) + "RNone", "")
+            self.dot.edge(str(graph_node.node), str(graph_node.node) + "RNone")
+
+    def gen_graph_tree(self):
+        self.dot = Digraph(format='png')
+        self.dot.node(str(self.root.node), str(self.root.node))
+        self.gen_graph_node(self.root)
+        self.dot.render("BST", "images")
+        del self.dot
+
 
 if __name__ == '__main__':
     B = BinarySearchTree(8)
     B.insert_node(3)
+    B.insert_node(2)
     B.insert_node(10)
     B.insert_node(5)
+    B.insert_node(4)
     B.insert_node(7)
     B.insert_node(12)
     B.insert_node(11)
     B.print_tree()
     B.search_node_print(4)
     B.search_node_print(11)
+    B.gen_graph_tree()

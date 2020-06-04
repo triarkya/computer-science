@@ -1,3 +1,6 @@
+from graphviz import Digraph
+
+
 class TreapNode:
     def __init__(self, priority, key):
         self.priority = priority
@@ -28,6 +31,7 @@ class TreapNode:
 class Treap:
     def __init__(self):
         self.root = None
+        self.dot = None
         self.nodes = {}
         self.node_count = 0
 
@@ -72,6 +76,35 @@ class Treap:
     def print_treap(self):
         print(self.root.print_childs())
 
+    def gen_graph_treapnode(self, graph_node):
+        if graph_node.child_left is not None:
+            self.dot.node(
+                str(graph_node.child_left.key),
+                str(graph_node.child_left.key) + "\nP:" + str(graph_node.child_left.priority)
+            )
+            self.dot.edge(str(graph_node.key), str(graph_node.child_left.key))
+            self.gen_graph_treapnode(graph_node.child_left)
+        else:
+            self.dot.node(str(graph_node.key) + "LNone", "")
+            self.dot.edge(str(graph_node.key), str(graph_node.key) + "LNone")
+        if graph_node.child_right is not None:
+            self.dot.node(
+                str(graph_node.child_right.key),
+                str(graph_node.child_right.key) + "\nP:" + str(graph_node.child_right.priority)
+            )
+            self.dot.edge(str(graph_node.key), str(graph_node.child_right.key))
+            self.gen_graph_treapnode(graph_node.child_right)
+        else:
+            self.dot.node(str(graph_node.key) + "RNone", "")
+            self.dot.edge(str(graph_node.key), str(graph_node.key) + "RNone")
+
+    def gen_graph_treap(self):
+        self.dot = Digraph(format='png')
+        self.dot.node(str(self.root.key), str(self.root.key) + "\nP:" + str(self.root.priority))
+        self.gen_graph_treapnode(self.root)
+        self.dot.render("Treap", "images")
+        del self.dot
+
 
 if __name__ == '__main__':
     T = Treap()
@@ -91,3 +124,4 @@ if __name__ == '__main__':
     }
     T.insert_node_dict(nodes)
     T.print_treap()
+    T.gen_graph_treap()
