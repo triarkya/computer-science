@@ -36,3 +36,10 @@ A treap is similar to a binary search tree with the difference that the nodes ar
     - Counting Sort
     - Heap Sort
     - Merge Sort
+    
+# Network Technology
+
+## Data Rates
+
+    - Nyquist (frequency in Hz, modulation (64 if 64-QAM))
+    - ODFM (quantity of subcarriers, modulation (64 if 64-QAM), total time interval per signal)
