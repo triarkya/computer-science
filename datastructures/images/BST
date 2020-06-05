@@ -1,0 +1,39 @@
+digraph {
+	8 [label=8]
+	3 [label=3]
+	8 -> 3
+	2 [label=2]
+	3 -> 2
+	"2LNone" [label=""]
+	2 -> "2LNone"
+	"2RNone" [label=""]
+	2 -> "2RNone"
+	5 [label=5]
+	3 -> 5
+	4 [label=4]
+	5 -> 4
+	"4LNone" [label=""]
+	4 -> "4LNone"
+	"4RNone" [label=""]
+	4 -> "4RNone"
+	7 [label=7]
+	5 -> 7
+	"7LNone" [label=""]
+	7 -> "7LNone"
+	"7RNone" [label=""]
+	7 -> "7RNone"
+	10 [label=10]
+	8 -> 10
+	"10LNone" [label=""]
+	10 -> "10LNone"
+	12 [label=12]
+	10 -> 12
+	11 [label=11]
+	12 -> 11
+	"11LNone" [label=""]
+	11 -> "11LNone"
+	"11RNone" [label=""]
+	11 -> "11RNone"
+	"12RNone" [label=""]
+	12 -> "12RNone"
+}
