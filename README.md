@@ -27,8 +27,12 @@ A treap is similar to a binary search tree with the difference that the nodes ar
 ![](datastructures/images/Treap.png?raw=true)
     
 ## Searching Algorithms
-    - binary search
+    - Binary Search
+    - Bilinear Search
     
 ## Sorting Algorithms
     - Insertion Sort
+    - Bubble Sort
+    - Counting Sort
+    - Heap Sort
     - Merge Sort
