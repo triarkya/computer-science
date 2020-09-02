@@ -1,9 +1,25 @@
 # computer-science
 just a collection of different things in computer science
 
+# content:
+Automata:
+
+- [DFA](#dfa) (Deterministic Finite Automaton)
+
+Data Structures:
+
+- [BST](#bst) (Binary Search Tree)
+- [Treap](#treap) (Binary Search Tree)
+- [Searching Algorithms](#search_alg) (Binary Search, Bilinear Search)
+- [Sorting Algorithms](#sort_alg) (Insertion Sort, Bubble Sort, Counting Sort, Heap Sort, Merge Sort)
+
+[Network Technology](#net_tech)
+
+
+
 # Automata
 
-## DFA
+## DFA <a name="dfa"></a>
 from automata.automaton import *
 
 |Description | Method |
@@ -20,9 +36,9 @@ from automata.automaton import *
 As mentioned above all transitions as well as states can be imported from a file (csv-like format). The file-syntax should be similar to the input parameters of add\_state and add\_transition. The default separator is ",". If you need another separator just pass it to the respective import method as second parameter. Keep in mind that the initial state has to be set manually!
 
 
-# Data Structures 
+# Data Structures
 
-## BST (Binary Search Tree)
+## BST (Binary Search Tree) <a name="bst"></a>
 In a binary search tree, the left child is a smaller node than the current node and the right child is a larger node. A node is only inserted as a child if the currently visited node does not have a right or left child. Otherwise, the respective child is set as the new current node until the respective child does not exist.
 
 | Description | Method |
@@ -36,7 +52,7 @@ In a binary search tree, the left child is a smaller node than the current node 
 
 ![](datastructures/images/BST.png?raw=true)
     
-## Treap
+## Treap <a name="treap"></a>
 A treap is similar to a binary search tree with the difference that the nodes are inserted in ascending priority order.
 
     - create Treap from set af priority: key combinations
@@ -45,18 +61,18 @@ A treap is similar to a binary search tree with the difference that the nodes ar
     - image generation as .png (graphviz package needed)
 ![](datastructures/images/Treap.png?raw=true)
     
-## Searching Algorithms
+## Searching Algorithms <a name="search_alg"></a>
     - Binary Search
     - Bilinear Search
     
-## Sorting Algorithms
+## Sorting Algorithms <a name="sort_alg"></a>
     - Insertion Sort
     - Bubble Sort
     - Counting Sort
     - Heap Sort
     - Merge Sort
     
-# Network Technology
+# Network Technology <a name="net_tech"></a>
 
 ## Data Rates
 
