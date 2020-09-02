@@ -18,6 +18,15 @@ class DFAutomaton:
             accepting=is_final
         )
 
+    # import states from file
+    def import_states(self, filepath, separator=','):
+        states_file = open(filepath, 'r')
+        states_data = states_file.read().splitlines()
+        states_file.close()
+        for state in states_data:
+            name, is_final = state.rstrip().split(separator)
+            self.add_state(name, is_final)
+
     # set the initial state to an existing state of the automaton
     def set_initial(self, state):
         self.initial_state = self.states[state]
@@ -26,6 +35,15 @@ class DFAutomaton:
     # NOTE: first_state and next_state have to exist
     def add_transition(self, first_state, edge, next_state):
         self.states[first_state].transitions[edge] = next_state
+
+    # import transitions from file
+    def import_transitions(self, filepath, separator=','):
+        transitions_file = open(filepath, 'r')
+        transitions_data = transitions_file.read().splitlines()
+        transitions_file.close()
+        for transition in transitions_data:
+            first, edge, second = transition.rstrip().split(separator)
+            self.add_transition(first, edge, second)
 
     # returns the next state if the value of "edge" is passed to "state"
     def get_next_state(self, state, edge):

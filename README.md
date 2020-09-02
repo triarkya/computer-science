@@ -14,6 +14,10 @@ from automata.automaton import *
 | state 1 will be the initial state of A | A.set\_initial(1) |
 | add new transition from state 1 to state 2 with input "a" | A.add\_transition(1, "a", 2) |
 | simulate A on word "aabaaba" (verbose mode) | A.simulate("aabaaba", verbose=True) |
+| import states from file "states.csv" | A.import\_states("states.csv") |
+| import transitions from file "transitions.csv" | A.import\_transitions("transitions.csv") |
+
+As mentioned above all transitions as well as states can be imported from a file (csv-like format). The file-syntax should be similar to the input parameters of add\_state and add\_transition. The default separator is ",". If you need another separator just pass it to the respective import method as second parameter. Keep in mind that the initial state has to be set manually!
 
 
 # Data Structures 
@@ -21,9 +25,15 @@ from automata.automaton import *
 ## BST (Binary Search Tree)
 In a binary search tree, the left child is a smaller node than the current node and the right child is a larger node. A node is only inserted as a child if the currently visited node does not have a right or left child. Otherwise, the respective child is set as the new current node until the respective child does not exist.
 
-    - create BST by passing each node in the intended order
-    - print the BST
-    - image generation as .png (graphviz package needed)
+| Description | Method |
+| ------------|--------|
+| initialize the BST B with root 8 | B = BinarySearchTree(8)|
+| insert new node 3 into B | B.insert_node(3) |
+| print out B in nested parenthesis syntax | B.print_tree() |
+| generate .png version of B in "images" (graphviz needed!) | B.gen\_graph\_tree() | 
+| check if node 2 is in B and how many comparisons were necessary | B.search\_node(2) |
+| print the previous values as a readable sentence | B.search\_node\_print(2)
+
 ![](datastructures/images/BST.png?raw=true)
     
 ## Treap
