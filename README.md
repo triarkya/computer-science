@@ -5,6 +5,7 @@ just a collection of different things in computer science
 Automata:
 
 - [DFA](#dfa) (Deterministic Finite Automaton)
+- [NFA](#nfa) (Nondeterministic Finite Automaton)
 
 Data Structures:
 
@@ -20,7 +21,7 @@ Data Structures:
 # Automata
 
 ## DFA <a name="dfa"></a>
-from automata.automaton import *
+from automata.dfa import *
 
 |Description | Method |
 |------------|----------------|
@@ -34,6 +35,11 @@ from automata.automaton import *
 | import transitions from file "transitions.csv" | A.import\_transitions("transitions.csv") |
 
 As mentioned above all transitions as well as states can be imported from a file (csv-like format). The file-syntax should be similar to the input parameters of add\_state and add\_transition. The default separator is ",". If you need another separator just pass it to the respective import method as second parameter. Keep in mind that the initial state has to be set manually!
+
+## NFA <a name="nfa"></a>
+from automata.dfa import *
+
+The methods for NFA are similar to DFA but you can add more transitions per symbol. If you simulate the automaton on a given word, the automaton will try all possibilities and returns True if there is any accepting run. Currently no options for verbose mode.
 
 
 # Data Structures
