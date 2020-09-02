@@ -87,6 +87,7 @@ class BinarySearchTree:
         else:
             print(f"{node} not in Tree ({steps_tree} nodes compared)")
 
+    # important helper method to render the BST with graphviz
     def gen_graph_node(self, graph_node):
         if graph_node.child_left is not None:
             self.dot.node(str(graph_node.child_left.node), str(graph_node.child_left.node))
@@ -103,6 +104,7 @@ class BinarySearchTree:
             self.dot.node(str(graph_node.node) + "RNone", "")
             self.dot.edge(str(graph_node.node), str(graph_node.node) + "RNone")
 
+    # generate png image of the BST
     def gen_graph_tree(self):
         self.dot = Digraph(format='png')
         self.dot.node(str(self.root.node), str(self.root.node))
