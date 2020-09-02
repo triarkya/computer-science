@@ -1,50 +1,67 @@
 class State:
-    def __init__(self, name="q0", initial=False, accepting=False):
+    def __init__(self, name="q0", accepting=False):
         self.name = name
-        self.inital = initial
         self.accepting = accepting
         self.transitions = {}
 
 
 class DFAutomaton:
-    def __init__(self, name, states):
+    def __init__(self, name):
         self.name = name
         self.states = {}
-        for s in states:
-            self.states[s] = State(s)
+        self.initial_state = State()
 
-    def add_transition(self, firststate, edge, nextstate):
-        self.states[firststate].transitions[edge] = nextstate
+    # add new (non)final state to automaton without transitions
+    def add_state(self, label, is_final):
+        self.states[label] = State(
+            name=label,
+            accepting=is_final
+        )
 
-    def next_state(self, state, edge):
+    # set the initial state to an existing state of the automaton
+    def set_initial(self, state):
+        self.initial_state = self.states[state]
+
+    # first_state --- edge ---> next_state
+    # NOTE: first_state and next_state have to exist
+    def add_transition(self, first_state, edge, next_state):
+        self.states[first_state].transitions[edge] = next_state
+
+    # returns the next state if the value of "edge" is passed to "state"
+    def get_next_state(self, state, edge):
         return self.states[state.transitions[edge]]
 
-    def simulate(self, initial, word, verbose=False):
-        initial_state = self.states[initial]
-        next_state = self.next_state(initial_state, word[0])
+    # simulate the automaton on a given word
+    def simulate(self, word, verbose=False):
+        next_state = self.get_next_state(self.initial_state, word[0])
+        run_output = ''
         if verbose:
-            print(f"starting at state {initial_state.name}")
-            print(f"going to state {next_state.name} with transition {word[0]}")
+            run_output = f'[{self.initial_state.name}]---{word[0]}-->[{next_state.name}]---'
         for i in range(1, len(word)):
-            next_state = self.next_state(initial_state, word[i])
+            next_state = self.get_next_state(next_state, word[i])
             if verbose:
-                print(f"going to state {next_state.name} with transition {word[i]}")
+                run_output += f'{word[i]}-->[{next_state.name}]---'
         if verbose:
             if next_state.accepting:
+                run_output += '>ACCEPT'
                 print(f"accepting at state {next_state.name}")
             else:
-                print(f"not accepting at state {next_state.name}")
+                print(f"rejecting at state {next_state.name}")
+                run_output += '>REJECT'
+            print(run_output)
         return next_state.accepting
 
 
 if __name__ == '__main__':
-    A = DFAutomaton("test", [1, 2, 3])
-    A.states[1].inital = True
-    A.states[3].accepting = True
+    A = DFAutomaton("test")
+    A.add_state(1, False)
+    A.set_initial(1)
+    A.add_state(2, False)
+    A.add_state(3, True)
     A.add_transition(1, "a", 3)
     A.add_transition(1, "b", 1)
     A.add_transition(2, "a", 2)
     A.add_transition(2, "b", 1)
     A.add_transition(3, "b", 3)
     A.add_transition(3, "a", 2)
-    print(A.simulate(1, "bbbbbabaaabababababbbbbaababbaaababbaaaaabaaabababaaababa", True))
+    print(A.simulate("bbbbbabaaabababababbbbbaababbaaababbaaaaabaaabababaaababa", True))

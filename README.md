@@ -4,8 +4,17 @@ just a collection of different things in computer science
 # Automata
 
 ## DFA
-    - create DFA from a set of transitions (state_a, transition, state_b)
-    - run the DFA on input
+from automata.automaton import *
+
+|Description | Method |
+|------------|----------------|
+|init DFA with name "test" | A = DFAutomaton("test") |
+| add state 2 as final state to DFA A | A.add_state(2, is\_final=True) |
+| add state 3 as nonfinal state to DFA A | A.add_state(3, is\_final=False) |
+| state 1 will be the initial state of A | A.set\_initial(1) |
+| add new transition from state 1 to state 2 with input "a" | A.add\_transition(1, "a", 2) |
+| simulate A on word "aabaaba" (verbose mode) | A.simulate("aabaaba", verbose=True) |
+
 
 # Data Structures 
 
